@@ -7,7 +7,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { GetDataService } from './services/get-data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
