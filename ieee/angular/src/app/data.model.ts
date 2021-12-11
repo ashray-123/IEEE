@@ -16,6 +16,7 @@ export class companyMod{
 }
 
 export class dashboardData{
+    public url!: string;
     public title!:string;
     public datetime!: string;
     public positive!: number;
