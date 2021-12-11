@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,9 +9,10 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GetDataService } from './services/get-data.service';
 import { HttpClientModule } from '@angular/common/http';
-// import { NgChartsModule } from 'ng2-charts';
 import { ChartsModule } from 'ng2-charts';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NgbModule,
     HttpClientModule,
     ChartsModule,
-    NoopAnimationsModule
-    
+    NoopAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

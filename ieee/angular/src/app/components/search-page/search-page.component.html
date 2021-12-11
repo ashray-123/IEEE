@@ -1,3 +1,6 @@
+<app-navbar>
+</app-navbar>
+
 <div class="row">
     <div class="col-sm-6">    
         <div class="imgFormat">
@@ -8,8 +11,16 @@
         <h1 style = "padding-top: 30%; font-size: 94px;">SEARCH STOCK</h1>
 
         <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" />
+            <mat-form-field appearance="outline">
+                <mat-label>Stock</mat-label>
+                <input type="text" placeholder="Search Stock" aria-label="Stock" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let stock of filteredOptions | async" [value]="stock">
+                        {{stock}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
             <button type="button" style="margin-right: 20%;" class="btn btn-outline-primary">search</button>
         </div>
     <br>
