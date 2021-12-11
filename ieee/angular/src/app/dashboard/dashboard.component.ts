@@ -20,6 +20,15 @@ export class DashboardComponent implements OnInit {
   neutral_article=0;
   biased=0
   unbiased=0
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  public pieChartLabels: Label[] = ["positive","negative", "neutral"];
+  public pieChartData: SingleDataSet = [300, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
+
   constructor(private route:ActivatedRoute,private _service:GetDataService) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();

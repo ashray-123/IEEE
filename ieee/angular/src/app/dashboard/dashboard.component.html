@@ -45,7 +45,17 @@
         </table>
     </div>
     <div class="col-md-6">
-        piechart
+        <div style="display: block;">
+            <canvas baseChart 
+              [data]="pieChartData" 
+              [labels]="pieChartLabels" 
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>
+          
     </div>
 </div>
 <br>

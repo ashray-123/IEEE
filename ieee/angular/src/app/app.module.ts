@@ -9,7 +9,8 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GetDataService } from './services/get-data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { NgChartsModule } from 'ng2-charts';
+// import { NgChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -25,7 +26,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgChartsModule,
+    ChartsModule,
     NoopAnimationsModule
     
   ],
