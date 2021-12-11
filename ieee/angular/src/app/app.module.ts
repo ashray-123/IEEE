@@ -12,7 +12,7 @@ import { SearchPageComponent } from './components/search-page/search-page.compon
   declarations: [
     AppComponent,
 
-    DashboardComponent
+    DashboardComponent,
 
     NavbarComponent,
     SearchPageComponent
