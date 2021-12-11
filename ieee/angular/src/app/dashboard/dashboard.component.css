@@ -1,0 +1,29 @@
+.main-stats-table{
+    margin-left: 5%;
+    width: 90%;
+    height: 80%;
+    margin-right: 5%;
+}
+.main-stats-table-left{
+        background-color: #dcdcdc;
+        text-align: left;
+        padding-left: 10px;
+        width: 40%;
+    }
+.main-stats-table-right{
+        background-color: #c4c4c4;
+        width: 40%;
+        text-align: center;
+    }
+.main-stats-table-spacer{
+        height: 2px;
+    }
+
+.article
+{
+    background: rgba(63, 191, 160, 0.22);
+    margin-left: 5%;
+    width: 90%;
+    height: 80%;
+    margin-right: 5%;
+}
