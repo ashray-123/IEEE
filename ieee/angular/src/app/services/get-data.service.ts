@@ -12,15 +12,16 @@ export class GetDataService {
   base_url = "http://localhost:3000/view-data";
 
   //get all the articles
-  getAllCompanyNames():Observable<string[]>{
-    return this.http.get<string[]>(this.base_url+"/company-list");
+  async getAllCompanyNames():Promise<string[]>{
+    return  await this.http.get<string[]>(this.base_url+"/company-list").toPromise();
   }
 
-  getAllCompanies():Observable<Map<string,string>[]>{
-    return this.http.get<Map<string,string>[]>(this.base_url+"/companies");
+  async getAllCompanies():Promise<Map<string,string>[]>{
+    return await this.http.get<Map<string,string>[]>(this.base_url+"/companies").toPromise();
   }
 
-  searchCompanyAnalysis(company_name:string):Observable<dashboardData[]>{
-    return this.http.get<dashboardData[]>(this.base_url+"/search-company/"+ company_name);
+
+  async searchCompanyAnalysis(company_name:string):Promise<dashboardData[]>{
+    return await this.http.get<dashboardData[]>(this.base_url+"/search-company/"+ company_name).toPromise();
   }
 }
