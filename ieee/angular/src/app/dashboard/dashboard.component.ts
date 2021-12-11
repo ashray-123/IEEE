@@ -14,8 +14,13 @@ export class DashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.company_name=this.route.snapshot.paramMap.get("key")
     console.log(this.company_name)
-    var data=await this._service.searchCompanyAnalysis()
-    console.log(data)
+    var data=await this._service.searchCompanyAnalysis(encodeURI(this.company_name))
+    for(var art of data){
+      if(art.subjectivity==0.0 && art.positive==0 && art.negative==0 && art.negative==0){
+        continue
+      }
+      console.log(art)
+    }
   }
 
 }

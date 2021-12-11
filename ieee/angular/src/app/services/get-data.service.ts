@@ -20,8 +20,8 @@ export class GetDataService {
     return await this.http.get<Map<string,string>[]>(this.base_url+"/companies").toPromise();
   }
 
-  async searchCompanyAnalysis():Promise<dashboardData[]>{
-    return await this.http.get<dashboardData[]>(this.base_url+"/search-company/").toPromise();
+
+  async searchCompanyAnalysis(company_name:string):Promise<dashboardData[]>{
+    return await this.http.get<dashboardData[]>(this.base_url+"/search-company/"+ company_name).toPromise();
   }
-  
 }
