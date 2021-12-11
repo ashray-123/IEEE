@@ -9,7 +9,7 @@ import { dashboardData, dataMod } from '../data.model';
 export class GetDataService {
 
   constructor(private readonly http: HttpClient) { }
-  base_url = "http://localhost:3000/";
+  base_url = "http://localhost:3000/view-data";
 
   //get all the articles
   getAllCompanyNames():Observable<string[]>{
@@ -20,8 +20,7 @@ export class GetDataService {
     return this.http.get<Map<string,string>[]>(this.base_url+"/companies");
   }
 
-  searchCompanyAnalysis():Observable<dashboardData[]>{
-    return this.http.get<dashboardData[]>(this.base_url+"/search-company");
+  searchCompanyAnalysis(company_name:string):Observable<dashboardData[]>{
+    return this.http.get<dashboardData[]>(this.base_url+"/search-company/"+ company_name);
   }
-  
 }
