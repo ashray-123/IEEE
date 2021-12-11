@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GetDataService } from './services/get-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgChartsModule } from 'ng2-charts';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgChartsModule
+    NgChartsModule,
+    NoopAnimationsModule
     
   ],
   providers: [],
