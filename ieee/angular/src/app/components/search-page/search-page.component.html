@@ -1,5 +1,4 @@
-<app-navbar>
-</app-navbar>
+
 
 <div class="row">
     <div class="col-sm-6">    
@@ -14,15 +13,15 @@
             <mat-form-field appearance="outline">
                 <mat-label>Stock</mat-label>
                 <input type="text" placeholder="Search Stock" aria-label="Stock" matInput [formControl]="myControl"
-                    [matAutocomplete]="auto">
+                    [matAutocomplete]="auto" #inp>
                 <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let stock of filteredOptions | async" [value]="stock">
                         {{stock}}
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <button type="button" style="margin-right: 20%;" class="btn btn-outline-primary">search</button>
         </div>
+        <button type="button" style="margin-right: 20%;" class="btn btn-primary" (click)="clicked(inp.value)">search</button>
     <br>
     </div>  
 </div>    

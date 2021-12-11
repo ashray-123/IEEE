@@ -52,7 +52,8 @@
               [chartType]="pieChartType"
               [options]="pieChartOptions"
               [plugins]="pieChartPlugins"
-              [legend]="pieChartLegend">
+              [legend]="pieChartLegend"
+              [colors]="donutColors1">
             </canvas>
           </div>
           
@@ -63,16 +64,28 @@
 
 <h3 style="margin-left: 5%;">Articles:</h3>
 
-<div class="article container" style="margin-top: 2%;">
-    <div class="row">
-            <div class="col-md-6">
-                <h6>Title : Something Something</h6>
-                <h6>Date : 22/10/30 12:20:00</h6>
-                <h6>URL : <a>www.google.com</a></h6>
-                <h6>Subjectivity: Biased</h6>
-            </div>
-            <div class="col-md-6">
-                Pie chart
-            </div>
+<div *ngFor="let art of analyzed_data">
+    <div class="article container" style="margin-top: 2%;">
+        <div class="row">
+                <div class="col-md-6">
+                    <h6>Title : {{art.title}}</h6>
+                    <h6>Date : {{art.datetime}}</h6>
+                    <h6>URL : <a href="{{art.url}}">{{art.url}}</a></h6>
+                    <h6>Subjectivity: {{art.subjectivity>0.5?"Biased":"Unbiased"}}</h6>
+                </div>
+                <div class="col-md-6">
+                    <div style="display: block;">
+                        <canvas baseChart 
+                          [data]="[art.positive,art.negative,art.neutral]" 
+                          [labels]="pieChartLabels" 
+                          [chartType]="pieChartType"
+                          [options]="pieChartOptions"
+                          [plugins]="pieChartPlugins"
+                          [legend]="pieChartLegend"
+                          [colors]="donutColors1">
+                        </canvas>
+                </div>
+        </div>
     </div>
+    
 </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GetDataService } from '../services/get-data.service';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { dashboardData } from '../data.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,14 +21,28 @@ export class DashboardComponent implements OnInit {
   neutral_article=0;
   biased=0
   unbiased=0
+  public donutColors1=[
+    {
+      backgroundColor: [
+        'rgba(92, 184, 92,1)',
+        'rgba(217, 83, 79,1)',
+          'rgba(255, 195, 0, 1)',
+          'rgba(129, 78, 40, 1)',
+          'rgba(129, 199, 111, 1)'
+      ]
+    }
+  ];
   public pieChartOptions: ChartOptions = {
     responsive: true,
+    
   };
   public pieChartLabels: Label[] = ["positive","negative", "neutral"];
-  public pieChartData: SingleDataSet = [300, 500, 100];
+  public pieChartData: SingleDataSet = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
+  public analyzed_data:dashboardData[]=[];
+  // public company_name2=""
 
   constructor(private route:ActivatedRoute,private _service:GetDataService) { 
     monkeyPatchChartJsTooltip();
@@ -36,12 +51,13 @@ export class DashboardComponent implements OnInit {
   
   async ngOnInit(): Promise<void> {
     this.company_name=this.route.snapshot.paramMap.get("key")
-    console.log(this.company_name)
+    // console.log(this.company_name)
     var data=await this._service.searchCompanyAnalysis(encodeURI(this.company_name))
-    var analyzed_data=[]
     var nonanalyzed_data=[]
     this.symbol=data[0].symbol
     this.market_cap=data[0].market_cap
+    // this.company_name2=data[0].company_name
+    // console.log(this.company_name2)
     var  titles=[""]
     for(var art of data){
       if(titles.includes(art.title)){
@@ -51,7 +67,7 @@ export class DashboardComponent implements OnInit {
         nonanalyzed_data.push(art)
       }
       else{
-        analyzed_data.push(art)
+        this.analyzed_data.push(art)
         titles.push(art.title)
         if(Number(art.positive)>Number(art.negative) && Number(art.positive)>Number(art.neutral))
         {
@@ -74,8 +90,12 @@ export class DashboardComponent implements OnInit {
       }
       
     }
-    // this.total_article=analyzed_data.length;
+    this.pieChartData.push(this.positive_article)
+    this.pieChartData.push(this.negative_article)
+    this.pieChartData.push(this.neutral_article)
+    
+    
   }
-    // console.log(nonanalyzed_data)  }
+    
   
 }

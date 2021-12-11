@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { GetDataService } from 'src/app/services/get-data.service';
@@ -11,7 +12,7 @@ import { GetDataService } from 'src/app/services/get-data.service';
 })
 export class SearchPageComponent implements OnInit {
 
-  constructor(private getDataService: GetDataService) { }
+  constructor(private getDataService: GetDataService,private _nav:Router) { }
 
   myControl:any = new FormControl();
   filteredOptions!: Observable<string[]>;
@@ -36,7 +37,10 @@ export class SearchPageComponent implements OnInit {
     const filterValue = value.toLowerCase();  
     return this.companies.filter(option => option.toLowerCase().includes(filterValue));
   }
-
+  clicked(value:string){
+    // console.log(value)
+    this._nav.navigate(["viewstats",value])
+  }
 }
 
 
