@@ -1,5 +1,5 @@
 .main-stats-table{
-    margin-left: 5%;
+    margin-left: 10%;
     width: 90%;
     height: 80%;
     margin-right: 5%;
@@ -27,7 +27,7 @@
     padding-left: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
-    /* height: 80%; */
+    border-radius: 20px;
     margin-right: 5%;
     
 }
