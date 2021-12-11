@@ -22,8 +22,12 @@
 .article
 {
     background: rgba(63, 191, 160, 0.22);
-    margin-left: 5%;
+    margin: 5%;
     width: 90%;
-    height: 80%;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* height: 80%; */
     margin-right: 5%;
+    
 }
