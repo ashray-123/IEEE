@@ -9,6 +9,8 @@ import { GetDataService } from '../services/get-data.service';
 export class DashboardComponent implements OnInit {
 
   company_name:any="";
+  symbol=""
+  market_cap!:number;
   total_article:number=0;
   positive_article=0;
   negative_article=0;
@@ -21,6 +23,8 @@ export class DashboardComponent implements OnInit {
     var data=await this._service.searchCompanyAnalysis(encodeURI(this.company_name))
     var analyzed_data=[]
     var nonanalyzed_data=[]
+    this.symbol=data[0].symbol
+    this.market_cap=data[0].market_cap
     for(var art of data){
       if(art.subjectivity==0.0 && art.positive==0 && art.negative==0 && art.negative==0){
         nonanalyzed_data.push(art)
@@ -29,6 +33,7 @@ export class DashboardComponent implements OnInit {
         analyzed_data.push(art)
         if(art.positive>art.negative && art.positive>art.neutral){
           this.positive_article++
+          console.log(art)
         }
         else if (art.negative>art.positive && art.negative>art.neutral){
           this.negative_article++
